@@ -51,3 +51,17 @@ func TestMoveLogic(t *testing.T) {
     t.Fail()
   }
 }
+
+func TestResultLogic(t *testing.T) {
+  m := resolveResult(move("C"), move("X"))
+
+  if m != move("B") {
+    t.Fail()
+  }
+
+  m = resolveResult(move("C"), move("Y"))
+
+  if m != move("C") {
+    t.Fail()
+  }
+}

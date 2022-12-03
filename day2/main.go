@@ -80,10 +80,27 @@ func winningMovePair(m1 move, m2 move) (int, int) {
   return m1Result, score
 }
 
+func resolveResult(m1 move, m2 move) move {
+  var (
+    resultMatrix = [][]move {
+      {move("C"), move("A"), move("B")}, // rock
+      {move("A"), move("B"), move("C")}, // paper
+      {move("B"), move("C"), move("A")}, // scissors
+    }
+  )
+  move1 := idMove(m1)
+  expectedResult := idMove(m2)
+  return resultMatrix[move1][expectedResult]
+  // 0 -- lose
+  // 1 -- draw
+  // 2 -- win
+}
+
 func main(){
   input := aoc22.LoadInputs("inputs.txt")
   for _, moves := range input {
-    elf, player := loadMove(moves)
+    elf, fixedResult := loadMove(moves)
+    player := resolveResult(elf, fixedResult)
     _, score := winningMovePair(player, elf)
     totalScore = totalScore + score
   }
