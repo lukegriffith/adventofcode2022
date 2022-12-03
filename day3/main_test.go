@@ -54,3 +54,13 @@ func TestGetItemValue(t *testing.T) {
   }
 }
 
+func TestModulo(t *testing.T) {
+
+  if 1 % 3 == 0 {
+    t.Fail()
+  }
+
+  if 3 % 3 == 1 {
+    t.Fail()
+  }
+}
