@@ -21,14 +21,6 @@ func (i item) getValue() int {
 var (
   prioritySum = 0
   contentTypeMap map[item]void
-  itemScore map[item]int = map[item]int{
-    'p': 16,
-    'L': 38,
-    'P': 42,
-    'v': 22,
-    't': 20,
-    's': 19,
-  }
   part1 bool = false
   part2 bool = true
 )
