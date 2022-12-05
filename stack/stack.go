@@ -7,6 +7,9 @@ type Stack[T any] struct {
 func NewStack[T any]() *Stack[T] {
 	return &Stack[T]{nil}
 }
+func (stack *Stack[T]) Length() int {
+	return len(stack.keys)
+}
 
 func (stack *Stack[T]) Push(key T) {
 	stack.keys = append(stack.keys, key)
