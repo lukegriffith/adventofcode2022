@@ -14,7 +14,7 @@ func decodeMarker(input string, markerLength int) int {
 		q.Push(i)
 	}
 	type void struct{}
-	for q.Position()+3 < q.Length() {
+	for q.Position()+markerLength < q.Length() {
 		runeMap := map[rune]void{}
 		for i := 0; i < markerLength; i++ {
 			runeMap[q.PeekMore(i)] = void{}
