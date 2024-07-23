@@ -23,10 +23,10 @@ type Entity struct {
 	PreviousPosition map[Coord]void
 }
 
-func NewEntity() Entity {
+func NewEntity() *Entity {
 	e := Entity{Coord{0, 0}, make(map[Coord]void)}
 	e.PreviousPosition[Coord{0, 0}] = void{}
-	return e
+	return &e
 }
 
 func (e *Entity) Move(direction rune) {
@@ -46,7 +46,7 @@ func (e *Entity) Move(direction rune) {
 	}
 }
 
-func (e *Entity) MoveToEntity(target Entity) {
+func (e *Entity) MoveToEntity(target *Entity) {
 	if math.Abs(float64(e.CurrentPosition.X-target.CurrentPosition.X)) < 2 &&
 		math.Abs(float64(e.CurrentPosition.Y-target.CurrentPosition.Y)) < 2 {
 		return
@@ -85,7 +85,7 @@ func day9(inputs []string) (int, int) {
 	head := NewEntity()
 	tail := NewEntity()
 
-	knots := []Entity{}
+	knots := []*Entity{}
 
 	for i := 0; i < 10; i++ {
 		knots = append(knots, NewEntity())
